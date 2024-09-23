@@ -31,12 +31,12 @@ Once you’ve cloned the repository, follow these steps to start the Spring Boot
 1. **Build the project** using Maven:
 
    ```bash
-   mvn clean install
+   ./mvnw clean install
    ```
 2. **Run the Application** using spring boot
 
   ```bash
-  mvn spring-boot:run
+  ./mvnw spring-boot:run
   ```
 
 
