@@ -34,11 +34,11 @@ Once you’ve cloned the repository, follow these steps to start the Spring Boot
    ./mvnw clean install
    ```
 2. **Run the Application** using spring boot
+    To run the application, you need to install the 'Spring Boot Extension Pack' from the VScode extension marketplace.
 
-  ```bash
-  ./mvnw spring-boot:run
-  ```
+    Then go to Spring dashboard, and you will see the option to run the app.
 
+    Before running make sure to see the Additional Infomation to take care of important things.
 
 3. **Spring Boot Server Running**:
  The Spring Boot server should now be running locally on:
@@ -47,9 +47,15 @@ Once you’ve cloned the repository, follow these steps to start the Spring Boot
    http://localhost:8080
    ```
 
-
 ## Additional Information
 
 - This project uses MySQL as the database. Make sure to update the database credentials in `application.properties` or `application.yml` before running the project.
 - Default configurations can be found in the `src/main/resources` directory.
+- Create a .env file in the project directory(where the README file is located) and update the following fields:
+  ```bash
+  DB_URL=jdbc:mysql://localhost:3306/learning_platform?useSSL=false (or the port number your database is located at)
+  DB_USERNAME=(your_sql_username)
+  DB_PASSWORD=(your_sql_password)
+  ```
+
 
