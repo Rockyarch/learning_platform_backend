@@ -2,7 +2,7 @@ CREATE DATABASE learning_platform;
 USE learning_platform;
 
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
@@ -16,27 +16,27 @@ CREATE TABLE users (
 );
 
 CREATE TABLE courses (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
     description TEXT,
-    instructor_id INT,
+    instructor_id BIGINT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (instructor_id) REFERENCES users(id)
 );
 
 CREATE TABLE enrollments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    course_id INT,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT,
+    course_id BIGINT,
     enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 
 CREATE TABLE course_materials (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    course_id INT,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    course_id BIGINT,
     title VARCHAR(100),
     content TEXT, -- Adjust data type based on content size
     material_type VARCHAR(50),
@@ -46,8 +46,8 @@ CREATE TABLE course_materials (
 );
 
 CREATE TABLE assignments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    course_id INT,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    course_id BIGINT,
     title VARCHAR(100),
     description TEXT, -- Adjust data type based on description length
     due_date DATE,
@@ -57,9 +57,9 @@ CREATE TABLE assignments (
 );
 
 CREATE TABLE submissions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    assignment_id INT,
-    user_id INT,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    assignment_id BIGINT,
+    user_id BIGINT,
     submission_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     grade DECIMAL(5,2), -- Adjust precision and scale as needed
     feedback TEXT,
@@ -68,8 +68,8 @@ CREATE TABLE submissions (
 );
 
 CREATE TABLE chapters (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    course_id INT,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    course_id BIGINT,
     title VARCHAR(100) NOT NULL,
     content TEXT, -- This could be the chapter content or a reference to where the content is stored
     chapter_number INT, -- Indicates the order of chapters

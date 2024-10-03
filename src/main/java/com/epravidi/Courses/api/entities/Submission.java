@@ -3,6 +3,8 @@ package com.epravidi.Courses.api.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
@@ -26,9 +28,16 @@ public class Submission {
     @Column(name = "submission_date", nullable = false, updatable = false)
     private Timestamp submissionDate;
 
-    @Column(precision = 5)
-    private Double grade;
+    @Column(name = "grade", precision = 5, scale = 2)  // Specify precision and scale
+    private BigDecimal grade;  // Change to BigDecimal for DECIMAL(5,2)
 
     @Column(columnDefinition = "TEXT")
     private String feedback;
+
+    @PrePersist
+    protected void onCreate() {
+        submissionDate = new Timestamp(System.currentTimeMillis());
+    }
+
+    
 }

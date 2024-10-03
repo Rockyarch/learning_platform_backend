@@ -25,5 +25,11 @@ public class Enrollment {
 
     @Column(name = "enrollment_date", nullable = false, updatable = false)
     private Timestamp enrollmentDate;
+
+    @PrePersist
+    protected void onCreate() {
+        enrollmentDate = new Timestamp(System.currentTimeMillis());
+    }
+
 }
 

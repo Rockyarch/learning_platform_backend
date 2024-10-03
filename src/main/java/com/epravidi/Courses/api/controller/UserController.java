@@ -29,15 +29,12 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        System.out.println("Getting id.");
         Optional<User> user = userService.getUserById(id);
-        System.out.println("Got id");
         return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public User createUser(@RequestBody User user) {
-        System.out.println("Creating user in controller layer");
         return userService.saveUser(user);
         
     }
@@ -60,8 +57,4 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/test")
-    public String testEndpoint() {
-        return "Test endpoint is working!";
-    }
 }
