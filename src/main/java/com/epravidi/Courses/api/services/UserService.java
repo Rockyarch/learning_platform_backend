@@ -15,7 +15,6 @@ public class UserService {
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
-        System.out.println("User repository created from service");
         this.userRepository = userRepository;
     }
 
@@ -28,7 +27,6 @@ public class UserService {
     }
 
     public User saveUser(User user) {
-        System.out.println("Creating user in service layer");
         return userRepository.save(user);
 
     }
